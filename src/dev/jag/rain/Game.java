@@ -1,8 +1,11 @@
 package dev.jag.rain;
 
 import java.awt.Canvas;
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable{
@@ -59,6 +62,12 @@ public class Game extends Canvas implements Runnable{
 			createBufferStrategy(3);
 			return;
 		}
+		
+		Graphics g = bufferStrategy.getDrawGraphics();
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, getWidth(), getHeight());		
+		g.dispose();
+		bufferStrategy.show();
 	}
 	
 	public static void main(String[] args) {
