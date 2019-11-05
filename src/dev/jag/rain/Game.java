@@ -2,11 +2,13 @@ package dev.jag.rain;
 
 import java.awt.Canvas;
 import java.awt.Color;
-
-import javax.swing.JFrame;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
+
+import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable{
 	
@@ -19,6 +21,8 @@ public class Game extends Canvas implements Runnable{
 	private boolean running = false;
 	
 	private JFrame frame;
+	private BufferedImage image = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+	private int[] pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 	
 	public Game() {
 		Dimension size = new Dimension(width*scale, height*scale);
