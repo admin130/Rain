@@ -3,6 +3,7 @@ package dev.jag.rain;
 import java.awt.Canvas;
 import javax.swing.JFrame;
 import java.awt.Dimension;
+import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable{
 	
@@ -42,7 +43,21 @@ public class Game extends Canvas implements Runnable{
 	@Override
 	public void run() {		
 		while(running) {
-			System.out.println("Running...");
+			update();
+			render();
+		}
+	}
+	
+	public void update() {
+		
+	}
+	
+	public void render() {
+		BufferStrategy bufferStrategy = getBufferStrategy();
+		
+		if(bufferStrategy == null) {
+			createBufferStrategy(3);
+			return;
 		}
 	}
 	
